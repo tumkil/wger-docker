@@ -37,7 +37,7 @@ services:
       - static:/wger/static:ro
       - media:/wger/media:ro
     ports:
-      - "80:80"
+      - "80"
     healthcheck:
       test: service nginx status
       interval: 10s
@@ -113,19 +113,15 @@ services:
 
 volumes:
   postgres-data:
-    external: true
   celery-beat:
-    external: true
   redis-data:
-    external: true
+
 
   # Heads up, if you remove these volumes and use folders directly you need to chown them
   # to the UID and GID 1000 even if it doesn't exist on your system. Also, they should
   # be readable by everyone.
   media:
-    external: true
   static:
-    external: true
 
 networks:
   default:
